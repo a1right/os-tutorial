@@ -21,9 +21,9 @@ __attribute__((section(".text.boot")))
 __attribute__((naked))
 void boot(void) {
     __asm__ __volatile__(
-        "mv sp, %[stack_top]\n" // Устанавливаем указатель стека
-        "j kernel_main\n"       // Переходим к функции main ядра
+        "mv sp, %[stack_top]\n" // Set stack pointer
+        "j kernel_main\n"       // MOV to kernel_main funciton
         :
-        : [stack_top] "r" (__stack_top) // Передаём верхний адрес стека в виде %[stack_top]
+        : [stack_top] "r" (__stack_top) // %[stack_top] parameter is current stack top pointer
     );
 }
